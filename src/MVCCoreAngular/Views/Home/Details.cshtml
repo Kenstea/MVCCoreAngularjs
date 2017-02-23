@@ -1,0 +1,83 @@
+﻿<div ng-app="employeeapp" ng-controller="employeeController" class="container">
+    <h1> Employee Details Page</h1>
+    <input type="text" placeholder="Search" ng-model="searchEmployee" />
+
+    <input type="button" class="btnAdd" value="Add Employee" ng-click="AddEmployeeDiv()" />
+    <div class="divList">
+
+        <p class="divHead">Employee List</p>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Employee Code
+                    </th>
+                    <th>
+                        Employee First Name
+                    </th>
+                    <th>
+                        Employee Last Name
+                    </th>
+                    <th><b>Actions</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | filter : searchEmployee">
+                    <th scope="row">
+                        {{employee.employeeId}}
+                    </th>
+                    <td>
+                        {{employee.employeeCode}}
+                    </td>
+                    <td>
+                        {{employee.firstName}}
+                    </td>
+                    <td>
+                        {{employee.lastName}}
+                    </td>
+                    <td>
+                        <span ng-click="editEmployee(employee)" class="btnAdd">Edit</span>
+                        <span ng-click="deleteEmployee(employee)" class="btnRed">Delete</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-show="divEmployee">
+        <p class="divHead">{{Action}} Employee</p>
+        <table>
+            <tr>
+                <td><b>Id</b></td>
+                <td>
+                    <input type="text" disabled="disabled" ng-model="employeeId" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Employee Code</b></td>
+                <td>
+                    <input type="text" ng-model="employeeCode" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Employee First Name</b></td>
+                <td>
+                    <input type="text" ng-model="firstName" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Employee Last Name</b></td>
+                <td>
+                    <input type="text" ng-model="lastName" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="btnAdd" value="Save" ng-click="AddUpdateEmployee()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
