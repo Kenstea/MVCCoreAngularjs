@@ -42,13 +42,7 @@ namespace MVCCoreAngular
             services.AddDbContext<EmployeeContext>(options =>
                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
 
             services.AddMvc();
 
@@ -74,7 +68,7 @@ namespace MVCCoreAngular
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
+       
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
